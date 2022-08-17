@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>22.8.16复习扩展卡片</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="app">
+		<div class="container">
+			<div class="parnel active" style="background-image:url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F20190921%2Fcqsperdbne4cqsperdbne4.png&refer=http%3A%2F%2Fimg9.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663330380&t=e1f2f692467b82a92a7615ffba71004a')" data-index="0">
+				<h3>图片1</h3>
+			</div>
+			<div class="parnel" style="background-image:url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F711%2F0Z113110452%2F130Z1110452-15-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663330380&t=cf967dd6243a07bfb503aadad5de9b86 ')" data-index="1">
+				<h3>图片2</h3>
+			</div>
+			<div class="parnel" style="background-image:url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2019-06-17%2F5d07582a6b690.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663330380&t=7c458cc446d5faf54f62406acd0a48b0')" data-index="2">
+				<h3>图片3</h3>
+			</div>
+			<div class="parnel" style="background-image:url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2019-12-29%2F5e0836f456b96.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663330380&t=b90c8ee65c5a7f7948d1781e4d41a8f4')" data-index="3">
+				<h3>图片4</h3>
+			</div>
+			<div class="parnel" style="background-image:url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-12-23%2F5a3e1ff3db3bf.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663330380&t=e335037560e4b6997cbc4b7139cb38c4')" data-index="4">
+				<h3>图片5</h3>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>
+<script>
+	const parnels = document.querySelectorAll('.parnel')
+	// console.log(parnels)
+	let index = 0
+	let clear;
+	interval()
+	parnels.forEach(parnel => {
+		parnel.addEventListener('click',(e)=>{
+			clearInterval(clear);
+			// console.log(parnel.classList)
+			removeActiveClassName()
+			parnel.classList.add('active')
+			index = e.target.dataset.index
+			interval()
+		})
+	})
+
+/**
+* 移除所有div的active属性工具函数
+*/
+	function removeActiveClassName(){
+		parnels.forEach(parnel => {
+			parnel.classList.remove('active')
+		})
+	}
+
+	function interval() {
+		clear = setInterval(() => {
+			removeActiveClassName()
+			parnels[index].classList.add('active')
+			if(index<4){
+				index++
+			}else{
+				index = 0
+			}
+		}, 2000);
+	}
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>22.8.17(步骤条)</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="app">
+		<div class="container">
+			<div class="progress_container">
+				<div class="progress" id="progress"></div>
+				<div class="circle active">1</div>
+				<div class="circle">2</div>
+				<div class="circle">3</div>
+				<div class="circle">4</div>
+			</div>
+			<div class="progress_btnGroup">
+				<button class="btn" id="pre">上一个</button>
+				<button class="btn" id="next">下一个</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	const progress = document.getElementById('progress')
+	const pre = document.getElementById('pre')
+	const next = document.getElementById('next')
+	const circles = document.querySelectorAll('.circle')
+
+	let index = 1
+	pre.addEventListener('click',(e)=>{
+		if(index==1){
+			return
+		}else{
+			circles.forEach(circle => {
+				if(circle.innerHTML == index){
+					circle.classList.remove('active')
+					index--
+					// console.log(350/circles.length*index - 5)	
+					// console.log(Number(index) / (circles.length-1))
+					progress.style.width = (index-1) / (circles.length-1) * 100 - 1 + '%'
+				}
+				// console.log(circles)
+			})
+		}
+	})
+
+	next.addEventListener('click',(e)=>{
+		if(index==circles.length){
+			return
+		}else{
+			index++
+			circles.forEach(circle => {
+				if(circle.innerHTML == index){
+					circle.classList.add('active')
+					console.log(index)
+					// console.log(((index) / circles.length*100%))
+					progress.style.width = (index-1) / (circles.length-1) * 100 - 1 + '%'
+				}
+			})
+		}
+	})
+</script>

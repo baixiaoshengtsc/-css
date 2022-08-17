@@ -1,0 +1,54 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	height: 100%;
+	overflow: hidden;
+	background-color: #ccc;
+}
+
+#app{
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container{
+	height: 90%;
+	width: 90vw;
+	/*background-color: red;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container .parnel{
+	box-sizing: border-box;
+	background-size: cover;
+	border-radius: 50px;
+	/*text-align: center;*/
+	height: 80%;
+	color: #ccc;
+	cursor: pointer;
+	flex: 1;
+	transition: all 450ms ease-in;
+	position: relative;
+}
+
+.container .parnel h3{
+	font-size: 28px;
+	font-weight: 400;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	opacity: 0;
+}
+
+.parnel.active{
+	flex: 5;
+}
+.parnel.active h3{
+	opacity: 1;
+	transition: opacity 0.4s ease-in 0.4s;
+}
