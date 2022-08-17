@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>22.8.16&&22.8.17(扩展卡片)</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="panel active"
+      style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1114%2F102920105033%2F201029105033-6-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663254144&t=6adf58dd2800a1fc5d59a0084d65f39c');"
+			data-index="0"
+			>
+      <h3>风景图1</h3>
+    </div>
+    <div class="panel"
+      style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2Ftp08%2F45041124184548-lp.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663254144&t=eddcae78d7bc26d48607d6c552a2bda4');"
+			data-index="1"
+			>
+      <h3>风景图2</h3>
+    </div>
+    <div class="panel"
+      style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F011220113I3%2F200112113I3-7-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663254144&t=d3d1aa353c4f2632e9ba7c70e6886354');"
+			data-index="2"
+			>
+      <h3>风景图3</h3>
+    </div>
+    <div class="panel"
+      style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1115%2F092621094155%2F210926094155-9-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663254144&t=d86b42b3099d876d6c49df0a1140717b');"
+			data-index="3"
+			>
+      <h3>风景图4</h3>
+    </div>
+    <div class="panel"
+      style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F4k%2Fs%2F02%2F210925003609C07-0-lp.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663254144&t=1228833c3f21499de9e63baf96d9c198');"
+			data-index="4"
+			>
+      <h3>风景图5</h3>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  const panels = document.querySelectorAll('.panel')
+
+  let index  = 0
+	let removeInterval;
+	Interval()
+
+  panels.forEach(item => {
+    item.addEventListener('click',function(e){
+			clearInterval(removeInterval)
+      removeActiveClassName()
+			index = Number(e.target.dataset.index)
+      item.classList.add('active')
+			Interval()
+    })
+    }
+  )
+	
+// 去除所有的的active类名
+function removeActiveClassName() {
+  panels.forEach(item => {
+    item.classList.remove('active')
+  })
+}
+
+// 定时器
+function Interval() {
+	removeInterval = setInterval(()=>{
+		removeActiveClassName();
+		panels[index].classList.add('active')
+		if(index<4){
+			index++
+		}else{
+			index = 0
+		}
+	},2000)
+}
+
+</script>

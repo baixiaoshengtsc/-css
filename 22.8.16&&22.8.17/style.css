@@ -1,0 +1,45 @@
+html,body,#app{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #ccc;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#app{
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; */
+  width: 90vw;
+}
+#app .panel{
+  box-sizing: border-box;
+  background-size: cover;
+  height: 80%;
+  border-radius: 50px;
+  color: #efefef;
+  cursor: pointer;
+  flex: 1;
+  margin: 10px;
+  position: relative;
+  transition: all 0.5s ease-in;
+}
+.panel h3{
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  opacity: 0;
+}
+.panel.active{
+  flex: 5 !important;
+}
+.panel.active h3{
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s 
+}
