@@ -85,9 +85,6 @@ html,body{
 	outline: 0;
 	transform: scale(0.98);
 }
-#pre:disabled{
+.btn:disabled{
 	cursor: not-allowed;
-}
-#next{
-
 }

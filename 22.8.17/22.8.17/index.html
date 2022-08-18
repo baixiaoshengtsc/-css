@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>22.8.17(步骤条)</title>
 	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 	<div id="app">
 		<div class="container">
@@ -23,6 +25,7 @@
 		</div>
 	</div>
 </body>
+
 </html>
 <script>
 	const progress = document.getElementById('progress')
@@ -31,36 +34,72 @@
 	const circles = document.querySelectorAll('.circle')
 
 	let index = 1
-	pre.addEventListener('click',(e)=>{
-		if(index==1){
-			return
-		}else{
-			circles.forEach(circle => {
-				if(circle.innerHTML == index){
-					circle.classList.remove('active')
+	pre.addEventListener('click', (e) => {
+		// controlBtn()
+		circles.forEach(circle => {
+			if (circle.innerHTML == index) {
+				// if(index == 1) {
+				// 	progress.style.width = 0 + '%'
+				// 	console.log('@@@')
+				// }else{
+				circle.classList.remove('active')
+
+				if (index == 2) {
+					progress.style.width = 0
 					index--
-					// console.log(350/circles.length*index - 5)	
-					// console.log(Number(index) / (circles.length-1))
-					progress.style.width = (index-1) / (circles.length-1) * 100 - 1 + '%'
+					pre.disabled = true
+					pre.classList.add('disabled')
+					console.log(index)
+				} else {
+					index--
+					progress.style.width = (index - 1) / (circles.length - 1) * 100 - 1 + '%'
+					next.disabled = false
+					next.classList.remove('disabled')
+					// console.log(index)
 				}
-				// console.log(circles)
+
+				// }
+			}
+		})
+		// console.log(circles)
+	})
+
+	next.addEventListener('click', (e) => {
+		// controlBtn()
+		if (index == circles.length) {
+			next.disabled = true
+			next.classList.add('disabled')
+			return
+		} else {
+			index++
+			circles.forEach(circle => {
+				if (circle.innerHTML == index) {
+					circle.classList.add('active')
+					// console.log(index)
+					// console.log(((index) / circles.length*100%))
+					progress.style.width = (index - 1) / (circles.length - 1) * 100 - 1 + '%'
+
+					pre.disabled = false
+
+					pre.classList.remove('disabled')
+
+				}
 			})
 		}
 	})
 
-	next.addEventListener('click',(e)=>{
-		if(index==circles.length){
-			return
-		}else{
-			index++
-			circles.forEach(circle => {
-				if(circle.innerHTML == index){
-					circle.classList.add('active')
-					console.log(index)
-					// console.log(((index) / circles.length*100%))
-					progress.style.width = (index-1) / (circles.length-1) * 100 - 1 + '%'
-				}
-			})
+	function controlBtn() {
+		if (index == 1) {
+			pre.disabled = true
+			pre.classList.add('disabled')
+		} else if (index == 3) {
+			next.disabled = true
+			next.classList.add('disabled')
+		} else {
+			pre.disabled = false
+			next.disabled = false
+			pre.classList.remove('disabled')
+			next.classList.remove('disabled')
 		}
-	})
+	}
 </script>
