@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="bg"></section>
+  <div class="loading-text">
+    0%
+  </div>
+</body>
+</html>
+<script>
+  const loading = document.getElementsByClassName('loading-text')[0]
+  const bg = document.querySelectorAll('.bg')[0]
+
+  let index = 0
+  let int = setInterval(blurring,30)
+
+  // console.log(loading.innerText)
+  function blurring() {
+    index ++
+    if(index>99){
+      clearInterval(int)
+    }
+    loading.innerText = `${index}%`
+    // console.log(bg)
+    // loading.style.opacity = intervalUtil(index,0,100,1,0)
+    bg.style.filter = `blur(${intervalUtil(index,0,100,20,0)}px)`
+  }
+
+  function intervalUtil(num, in_min, in_max, out_min, out_max) {
+    return ((num- in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+  }
+</script>

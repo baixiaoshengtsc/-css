@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+html,body{
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  /* background-color: black; */
+  justify-content: center;
+  align-items: center;
+}
+.bg{
+  background: url('https://img0.baidu.com/it/u=346365362,73186175&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500') no-repeat center center/cover;
+  /* background-size: cover; */
+  height: 100%;
+  width: 100vw;
+  z-index: -1;
+  position: absolute;
+  filter: blur(0);
+}
+.loading-text{
+  font-size: 28px;
+  font-weight: 800;
+}
