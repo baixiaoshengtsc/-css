@@ -1,0 +1,31 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+body{
+  height: 100vh;
+  background-color: #a064de;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .sound_btn{
+  background-color: #663398;
+  color: #fff;
+  border: 0px;
+  border-radius: 5px;
+  padding: 1.5rem 3rem;
+  margin: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.container .sound_btn:hover{
+  opacity: 0.9;
+}
+.container .sound_btn:focus{
+  outline: none;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22.8.24(音板)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 掌声 -->
+  <audio src="sound/applause.mp3" id="applause"></audio>
+  <!-- 嘘声 -->
+  <audio src="sound/boo.mp3" id="boo"></audio>
+  <!-- 喘息 -->
+  <audio src="sound/gasp.mp3" id="gasp"></audio>
+  <!-- tada -->
+  <audio src="sound/tada.mp3" id="tada"></audio>
+  <!-- 胜利 -->
+  <audio src="sound/victory.mp3" id="victory"></audio>
+  <!-- 错误 -->
+  <audio src="sound/wrong.mp3" id="wrong"></audio>
+  <div class="container">
+    <button class="sound_btn">applause</button>
+    <button class="sound_btn">boo</button>
+    <button class="sound_btn">gasp</button>
+    <button class="sound_btn">tada</button>
+    <button class="sound_btn">victory</button>
+    <button class="sound_btn">wrong</button>
+  </div>
+</body>
+</html>
+<script>
+  const btns = document.querySelectorAll('.sound_btn')
+  console.log(btns)
+  btns.forEach(item => {
+    item.addEventListener('click', ()=>{
+      stopPlay()
+      document.getElementById(item.innerHTML).play()
+    })
+  })
+
+  function stopPlay(){
+    btns.forEach(item => {
+      const sound = document.getElementById(item.innerHTML)
+      sound.pause()
+      sound.currentTime = 0
+    })
+  }
+</script>
