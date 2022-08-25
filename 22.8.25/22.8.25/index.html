@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22.8.25旋转导航</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h3>Don`t Laugh Challenge</h3>
+    <div id="joke" class="joke">
+      // Joke goes here
+    </div>
+    <button id="btn" class="btn">Get Another Joke</button>
+  </div>
+</body>
+</html>
+<script>
+  const joke = document.getElementById('joke')
+  const btn = document.getElementById('btn')
+
+  btn.addEventListener('click',getJoke)
+  getJoke()
+  async function getJoke(params){
+    const config = {
+      headers:{
+        Accept:'application/json'
+
+      }
+    }
+    const res = await fetch('https://icanhazdadjoke.com',config)
+    const data = await res.json()
+
+    joke.innerHTML = data.joke
+  }
+</script>
