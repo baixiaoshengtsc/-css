@@ -1,0 +1,24 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+body{
+  /* height: 100vh; */
+  /* width: 100vw; */
+  background-color: #f0f0f0;
+}
+h1{
+  margin: 50px 0 30px;
+  text-align: center;
+}
+.all_content{
+  max-width: 600px;
+  margin: 0 auto;
+}
+.container_content{
+  border: 1px solid #9fa4a8;
+  margin: 20px 0;
+  padding: 30px;
+}
