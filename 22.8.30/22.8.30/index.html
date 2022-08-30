@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22.8.30(增加计数器)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="box1 box" data-target="12000"></div>
+    <div class="box2 box" data-target="5000"></div>
+    <div class="box3 box" data-target="7500"></div>
+  </div>
+</body>
+</html>
+<script>
+  const boxs = document.querySelectorAll('.box')
+
+  boxs.forEach(box => {
+    box.innerText = '0'
+    const update = () => {
+      const target = +box.getAttribute('data-target')
+      const c = +box.innerText
+
+      const increment = target/200
+      if(c<target) {
+        box.innerText = `${Math.ceil(c+increment)}`
+        setTimeout(update,1)
+      }else{
+        box.innerText = target
+      }
+    }
+    update()
+  })
+
+</script>
