@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: steelblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.empty{
+  height: 150px;
+  width: 150px;
+  border: 3px solid black;
+  background: white;
+  margin-right: 10px;
+}
+
+.fill{
+  background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F052420110515%2F200524110515-1-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1664981422&t=a409fb193690a4986f0d536df2cdca4e');
+  height: 145px;
+  width: 145px;
+  cursor: pointer;
+}
+
+.hold{
+  border: 5px solid #ccc;
+}
+
+.hovered{
+  background-color: #333;
+  border-color: white;
+  border-style: dashed;
+}
+
+@media(max-width:800px) {
+  body{
+    flex-direction: column;
+  }
+}
