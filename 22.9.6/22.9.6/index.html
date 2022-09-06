@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22.9.6(绘画板)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="canvas" width="800px" height="700px"></canvas>
+  <div class="toolbox">
+    <button id="decrease">-</button>
+    <span id="size">10</span>
+    <button id="increase">+</button>
+    <input type="color" id="color">
+    <button id="clear">X</button>
+  </div>
+</body>
+</html>
+<script>
+  const canvas = document.getElementById('canvas')
+  const decrease = document.getElementById('decrease')
+  const sizeEL = document.getElementById('size')
+  const increase = document.getElementById('increase')
+  const colorEL = document.getElementById('color')
+  const clearEL = document.getElementById('clear')
+
+  const ctx = canvas.getContext('2d')
+
+  let size = 10
+  let isPressed = false
+  colorEL.value = 'black'
+  let color = colorEL.value
+  let x = undefined
+  let y = undefined
+
+  decrease.addEventListener('click', () => {
+    let ret = sizeEL.innerText - 0
+    if(ret === 0) {
+      return
+    }
+    sizeEL.innerText = ret - 1
+  })
+  increase.addEventListener('click', () => {
+    let ret = sizeEL.innerText - 0
+    sizeEL.innerText  = ret + 1
+  })
+
+  clearEL.addEventListener('click', () => {
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+  })
+
+  canvas.addEventListener('mousedown',(e) => {
+    isPressed = true
+
+    x = e.offsetX
+    y = e.offsetY
+
+
+  })
+
+  canvas.addEventListener('mouseup',(e) => {
+    isPressed = false
+
+    x = undefined
+    y = undefined
+  })
+
+  canvas.addEventListener('mousemove',(e) => {
+    if(isPressed) {
+      const x2 = e.offsetX
+      const y2 = e.offsetY
+
+      formate()
+      draw(x2,y2)
+      drawLine(x,y,x2,y2)
+
+      x = x2
+      y = y2
+    }
+  })
+
+  function draw(x,y) {
+    ctx.beginPath()
+    ctx.arc(x,y,size,0, Math.PI*2)
+    ctx.fillStyle = color
+    ctx.fill()
+  }
+
+  function drawLine(x,y,x2,y2) {
+    ctx.beginPath()
+    ctx.moveTo(x,y)
+    ctx.lineTo(x2,y2)
+    ctx.strokeStyle = color
+    ctx.lineWidth = size * 2
+    ctx.stroke()
+  }
+
+
+
+  function formate() {
+    size = sizeEL.innerText
+    color = colorEL.value
+  }
+</script>
