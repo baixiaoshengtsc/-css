@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22.9.14(文字滚动出现)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 id="text">w</h1>
+  <div>
+    <label for="speed">Speed:</label>
+    <input id="speed" type="number" name="speed" min="1" max="10" value="1" />
+  </div>
+</body>
+
+</html>
+<script>
+  const textEl = document.getElementById('text')
+  const speedEl = document.getElementById('speed')
+  const text = 'We Love Programming!'
+
+  let i = 1
+  let speed = 300 / speedEl.value
+
+  writeText()
+
+  function writeText() {
+    textEl.innerHTML = text.slice(0, i)
+    i++
+    if(i>text.length) {
+      i = 1
+    }
+    setTimeout(writeText, speed)
+  }
+
+  speedEl.addEventListener('input' ,(e)=>{speed = 300 / e.target.value})
+</script>
