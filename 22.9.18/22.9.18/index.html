@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22.9.18(滚动计数倒计时)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="counter">
+    <div class="nums">
+      <span class="in">3</span>
+      <span>2</span>
+      <span>1</span>
+      <span>0</span>
+    </div>
+    <h4>GET READY</h4>
+  </div>
+
+  <div class="final">
+    <h1>Go</h1>
+    <button id="replay">Replay</button>
+  </div>
+</body>
+
+</html>
+<script>
+  const nums = document.querySelectorAll('.nums span')
+  const counter = document.querySelector('.counter')
+  const finalMessage = document.querySelector('.final')
+  const replay = document.querySelector('#replay')
+
+  runAnimated()
+
+  function runAnimated() {
+    nums.forEach((num, i) => {
+      const length = nums.length - 1
+
+      num.addEventListener('animationend', (e) => {
+        if(e.animationName === 'goIn' && i !== length) {
+          num.classList.remove('in')
+          num.classList.add('out')
+        } else if(e.animationName === 'goOut' && num.nextElementSibling) {
+          num.nextElementSibling.classList.add('in')
+        } else {
+          counter.classList.add('hide')
+          finalMessage.classList.add('show')
+        }
+      })
+    })
+  }
+
+  function resetAnimate() {
+    counter.classList.remove('hide')
+    finalMessage.classList.remove('show')
+
+    nums.forEach(num => {
+      num.classList.value = ''
+    })
+    nums[0].classList.add('in')
+  }
+
+  replay.addEventListener('click', () => {
+    resetAnimate()
+  })
+</script>
